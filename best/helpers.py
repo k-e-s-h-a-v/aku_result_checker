@@ -30,9 +30,8 @@ def check_result(reg_no):
     name = value(res, "ctl00_ContentPlaceHolder1_DataList1_ctl00_StudentNameLabel", 0)
     sgpa = value(res, "ctl00_ContentPlaceHolder1_DataList5_ctl00_GROSSTHEORYTOTALLabel", 0)
     cgpa = value(res, "ctl00_ContentPlaceHolder1_GridView3", 17)
-
-    output = [reg_no, name, sgpa, cgpa]
-    return output
+ 
+    return [reg_no, name, sgpa, cgpa]
 
 
 # writing to results.xls

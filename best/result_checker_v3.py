@@ -13,8 +13,9 @@ resultList = []
 with concurrent.futures.ThreadPoolExecutor() as executor:
     results = [executor.submit(check_result, reg_no) for reg_no in reg_numlist] 
     for futureObj in concurrent.futures.as_completed(results):
-        print(futureObj.result())
-        resultList.append(futureObj.result())
+        result = futureObj.result()
+        print(result)
+        resultList.append(result)
         
 save_to_xls(resultList)
 
