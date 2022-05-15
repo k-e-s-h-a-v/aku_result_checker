@@ -5,7 +5,7 @@ import concurrent.futures
 
 start = time.perf_counter()
 
-print(["Reg_No.", "Name", "SGPA"])
+print(["Reg_No.", "Name", "SGPA", "CGPA"])
 
 reg_numlist = [
     18103108025,
