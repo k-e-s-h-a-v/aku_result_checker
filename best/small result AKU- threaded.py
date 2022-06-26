@@ -5,6 +5,11 @@ import concurrent.futures
 
 start = time.perf_counter()
 
+API6thsem = "https://results.akuexam.net/ResultsBTechBPharm6thSemPub2021.aspx"
+API7thsem = "https://results.akuexam.net/ResultsBTechBPharm7thSemPub2021.aspx"
+
+sem = "VII"
+
 print(["Reg_No.", "Name", "SGPA", "CGPA"])
 
 reg_numlist = [
@@ -18,7 +23,7 @@ reg_numlist = [
 with concurrent.futures.ThreadPoolExecutor() as executor:
 
     # Method 1: will show results as they are completed
-    results = [executor.submit(check_result, reg_no) for reg_no in reg_numlist]  #submit() returns a future object
+    results = [executor.submit(check_result, API7thsem, sem, reg_no) for reg_no in reg_numlist]  #submit() returns a future object
     for futureObj in concurrent.futures.as_completed(results):
         print(futureObj.result())
 
@@ -31,3 +36,5 @@ with concurrent.futures.ThreadPoolExecutor() as executor:
 finish = time.perf_counter()
 
 print(f"finished in {finish-start} seconds")
+print('script finished execution')
+input('press any key to continue.....')

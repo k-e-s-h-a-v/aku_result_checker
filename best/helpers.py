@@ -11,21 +11,21 @@ def value(res, id, index):
 response = (
     lambda payload, URL: HTMLSession()
     .get(
-        "https://results.akuexam.net/ResultsBTechBPharm6thSemPub2021.aspx",
+        URL,
         params=payload,
     )
     .html
 )
 
-def check_result(reg_no):
-    payload = {"Sem": "VI", "RegNo": reg_no}
+def check_result(API_URL, semaster_in_roman, reg_no):
+    payload = {"Sem": semaster_in_roman, "RegNo": reg_no}
 
     while 1:
-        try:
-            res = response(payload, "https://results.akuexam.net/ResultsBTechBPharm6thSemPub2021.aspx")
+        try:     
+            res = response(payload, API_URL)
             break
         except:
-            print("retrying for a number")
+            print(f"retrying for {reg_no}")
 
     name = value(res, "ctl00_ContentPlaceHolder1_DataList1_ctl00_StudentNameLabel", 0)
     sgpa = value(res, "ctl00_ContentPlaceHolder1_DataList5_ctl00_GROSSTHEORYTOTALLabel", 0)
