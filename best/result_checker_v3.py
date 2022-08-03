@@ -15,7 +15,7 @@ reg_numlist=list(range(18104108001, 18104108061))
 
 resultList = []
 
-with concurrent.futures.ThreadPoolExecutor() as executor:
+with concurrent.futures.ThreadPoolExecutor(max_workers=100) as executor:
     results = [executor.submit(check_result, API7thsem, sem, reg_no) for reg_no in reg_numlist] 
     for futureObj in concurrent.futures.as_completed(results):
         result = futureObj.result()

@@ -1,7 +1,6 @@
 from requests_html import HTMLSession
 from xlwt import Workbook 
 
-# value = lambda res, id, index: res.find(f"#{id}", first=True,).text.split("\n")[index]
 def value(res, id, index):
     try:
         return res.find(f"#{id}", first=True,).text.split("\n")[index]
